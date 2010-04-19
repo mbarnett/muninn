@@ -1,4 +1,5 @@
 class TweetsController < ApplicationController
+  before_filter :require_user
   # GET /tweets
   # GET /tweets.xml
   def index
@@ -32,11 +33,6 @@ class TweetsController < ApplicationController
     end
   end
 
-  # GET /tweets/1/edit
-  def edit
-    @tweet = Tweet.find(params[:id])
-  end
-
   # POST /tweets
   # POST /tweets.xml
   def create
@@ -54,32 +50,5 @@ class TweetsController < ApplicationController
     end
   end
 
-  # PUT /tweets/1
-  # PUT /tweets/1.xml
-  def update
-    @tweet = Tweet.find(params[:id])
 
-    respond_to do |format|
-      if @tweet.update_attributes(params[:tweet])
-        flash[:notice] = 'Tweet was successfully updated.'
-        format.html { redirect_to(@tweet) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @tweet.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /tweets/1
-  # DELETE /tweets/1.xml
-  def destroy
-    @tweet = Tweet.find(params[:id])
-    @tweet.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(tweets_url) }
-      format.xml  { head :ok }
-    end
-  end
 end
