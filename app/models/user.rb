@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
 
   # A connection to our user's twitter account
   def twitter
-    @oauth ||= Twitter::OAuth.new(TwitterConstants::CLIENT_TOKEN, TwitterConstants::CLIENT_SECRET)
   	oauth.authorize_from_access(oauth_token, oauth_secret)
 	  @twitter ||= Twitter::Base.new(oauth)
   end
@@ -28,6 +27,10 @@ class User < ActiveRecord::Base
   end
   
   private
+  
+  def oauth
+    @oauth ||= Twitter::OAuth.new(TwitterConstants::CLIENT_TOKEN, TwitterConstants::CLIENT_SECRET)
+  end
   
   def save_authorization(token, secret)
     update_attributes({
