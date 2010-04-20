@@ -1,3 +1,5 @@
+# More or less standard AuthLogic User controller
+
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => [:show, :edit, :update]
@@ -8,29 +10,24 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "Account registered!"
-      redirect_back_or_default account_url
+    if @user.save      
+      redirect_to new_user_authorizations_path(@user)
     else
       render :action => :new
     end
   end
   
-  def show
-    @user = @current_user
-  end
-
   def edit
-    @user = @current_user
+    @authorized = authorized?
   end
   
   def update
-    @user = @current_user # makes our views "cleaner" and more consistent
     if @user.update_attributes(params[:user])
       flash[:notice] = "Account updated!"
-      redirect_to account_url
+      redirect_to edit_account_path
     else
       render :action => :edit
     end
   end
+  
 end

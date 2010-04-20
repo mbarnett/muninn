@@ -1,0 +1,2 @@
+$("#flash_container").replaceWith('<div id="flash_container"><div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div></div>');
+$("#flash_notice").delay(4000).hide('slow');

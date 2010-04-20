@@ -1,0 +1,14 @@
+<h1>Historical Tweets</h1>
+<% if @tweets.count > 0 %>
+	<table>
+		<tbody>
+		<% @tweets.each do |tweet| %>
+			<tr>
+				<td><strong>On <%= tweet.created_at %>: </strong><%= tweet.content%></td>
+			</tr>
+		<% end %>
+		<strong></strong>
+	</table>
+<% else %>
+	<strong>You haven't tweeted anything yet!</strong>
+<% end %>

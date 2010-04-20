@@ -1,0 +1,19 @@
+
+<% if friends_timeline %>
+<table id="friends_timeline">
+<tbody>
+  <% friends_timeline.each do |tweet| %>
+    <tr>
+    	<td><strong><%= tweet.user.name %></strong><br/>
+      	<%= image_tag tweet.user.profile_image_url, :alt => tweet.user.screen_name, :class => 'avatar' %></td>
+    	<td><%=h tweet.text %></td>
+    	<td><a onclick="reply_to('<%= escape_javascript(tweet.user.screen_name) %>');">Reply</a></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<% else %>
+
+<strong>An error occurred while contacting twitter</strong>
+
+<% end %>

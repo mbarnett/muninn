@@ -1,0 +1,14 @@
+<h1>Enter Twitter Authorization Code</h1>
+
+<p>
+<%= link_to "Click here to get your authorization code", @auth_code_url, :target => "_blank"%>
+</p>
+
+<% form_tag user_authorizations_path(@user) do %>
+	<p>
+	  <%= label_tag :auth_code, 'Authorization Code: ' %>
+	  <%= text_field_tag :auth_code %>
+	  <br/>
+	  <%= submit_tag "Authorize" %> 
+	</p>
+<% end %>

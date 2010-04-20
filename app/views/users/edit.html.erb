@@ -6,4 +6,10 @@
   <%= f.submit "Update" %>
 <% end %>
 
-<br /><%= link_to "My Profile", account_path %>
+<% if @authorized %>
+<p>
+	<% form_tag user_authorizations_path(@user), :method => :delete do %>
+		<%= submit_tag "Delete my twitter association" %> 	<strong>Warning: this will delete all tweets that have been recorded!</strong>
+	<% end %>
+</p>
+<% end %>

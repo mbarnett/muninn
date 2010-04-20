@@ -1,0 +1,4 @@
+$("#flash_container").replaceWith('<div id="flash_container"><div id="flash_notice"><%= escape_javascript(flash.delete(:notice)) %></div></div>');
+$('#friends_timeline').replaceWith('<%= escape_javascript(render(:partial => 'shared/friends_timeline', :object => @user.friends_timeline)) %>');
+$("#new_historic_tweet")[0].reset();
+$("#flash_notice").delay(4000).hide('slow');

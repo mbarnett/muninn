@@ -1,0 +1,17 @@
+
+<h1>What's happening?</h1>
+
+<% form_for [@user, @tweet], :url => user_historic_tweets_path(@user) do |f| %>
+  <%= f.error_messages %>
+
+	<%= text_area "tweet", "content", "cols" => 70, "rows" => 4 %>
+
+  <p>
+    <%= f.submit 'Tweet it!' %>
+  </p>
+<% end %>
+
+<h1>Your Timeline</h1>
+
+<%= render :partial => "shared/friends_timeline", :object => @friends_timeline  %>
+

@@ -20,7 +20,9 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   
-  config.gem "authlogic"
+  config.gem 'authlogic'
+  config.gem 'twitter'
+  config.gem 'oauth'
   
   config.action_controller.session_store = :active_record_store
 
